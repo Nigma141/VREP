@@ -9,13 +9,19 @@ extern "C" {
 int main(int argc,char* argv[])
 {
 	int portNb=0;
-	int joint2;
-	simxFloat joint_position2;
+	int joint1, joint2, joint3, joint4, joint5, joint6;
+
+	simxFloat joint_position1,joint_position2,joint_position3,joint_position4,joint_position5,joint_position6;
 
 	if (argc>=2)
 	{
 		portNb=atoi(argv[1]);
-		joint2=atoi(argv[2]);
+		joint1 = atoi(argv[2]);
+		joint2 = atoi(argv[3]);
+		joint3 = atoi(argv[4]);
+		joint4 = atoi(argv[5]);
+		joint5 = atoi(argv[6]);
+		joint6 = atoi(argv[7]);
 	}
 	else
 	{
@@ -29,7 +35,7 @@ int main(int argc,char* argv[])
 	{
 
 		//afficher les commandes possibles
-		printf("a=axe2+,b=axe2-\n");
+		printf("a=axe1+,q=axe1-,z=axe2+,s=axe2-,e=axe3+,d=axe3-,r=axe4+,f=axe4-,t=axe5+,g=axe5-,y=axe5+,h=axe5-\n");
 		while (simxGetConnectionId(clientID)!=-1)
 		{
 			//lecture de la position de l'articulation 2
