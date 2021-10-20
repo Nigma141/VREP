@@ -39,22 +39,53 @@ int main(int argc,char* argv[])
 		while (simxGetConnectionId(clientID)!=-1)
 		{
 			//lecture de la position de l'articulation 2
-			simxGetJointPosition(clientID,joint2,&joint_position2,simx_opmode_oneshot_wait);
-			printf("position actuelle : %f\n",joint_position2);
+			simxGetJointPosition(clientID,joint1,&joint_position1,simx_opmode_oneshot_wait);
+			simxGetJointPosition(clientID, joint2, &joint_position2, simx_opmode_oneshot_wait);
+			simxGetJointPosition(clientID, joint3, &joint_position3, simx_opmode_oneshot_wait);
+			simxGetJointPosition(clientID, joint4, &joint_position4, simx_opmode_oneshot_wait); 
+			simxGetJointPosition(clientID, joint5, &joint_position5, simx_opmode_oneshot_wait);
+			simxGetJointPosition(clientID, joint6, &joint_position6, simx_opmode_oneshot_wait);
+
+			printf("position actuelle : %f\n", joint_position1);
+			printf("position actuelle : %f\n", joint_position2);
+			printf("position actuelle : %f\n", joint_position3);
+			printf("position actuelle : %f\n", joint_position4);
+			printf("position actuelle : %f\n", joint_position5);
+			printf("position actuelle : %f\n", joint_position6);
 			//lire une touche du clavier
 			char codechar;
 			codechar=getch();
 			//effectuer l'action demandée
 			switch (codechar) 
 			{
-			case 'a': joint_position2=joint_position2+0.2;
+			case 'a': joint_position1=joint_position1+0.2;
 				break;
-			case 'b':joint_position2=joint_position2-0.2;
+			case 'q':joint_position1=joint_position1-0.2;
+				break;
+			case 'z': joint_position2 = joint_position2 + 0.2;
+				break;
+			case 's':joint_position2 = joint_position2 - 0.2;
+				break;
+			case 'e': joint_position3 = joint_position3 + 0.2;
+				break;
+			case 'd':joint_position3 = joint_position3 - 0.2;
+				break;
+			case 'r': joint_position4 = joint_position4 + 0.2;
+				break;
+			case 'f':joint_position4 = joint_position4 - 0.2;
+				break;
+			case 't': joint_position5 = joint_position5 + 0.2;
+				break;
+			case 'g':joint_position5 = joint_position5 - 0.2;
+				break;
+			case 'y': joint_position6 = joint_position6 + 0.2;
+				break;
+			case 'h':joint_position6 = joint_position6 - 0.2;
 				break;
 
 			}
-			simxSetJointTargetPosition(clientID,joint2,joint_position2,simx_opmode_oneshot_wait ) ;
-			extApi_sleepMs(1000); //attente de 1 secondes
+			simxSetJointTargetPosition(clientID, joint1, joint_position1, joint2, joint_position2, joint3, joint_position3,joint4,joint_position4, joint5, joint_position5, joint6, joint_position6,simx_opmode_oneshot_wait ) ;
+			extApi_sleepMs(100); //attente de 1 secondes
 		
 		}
 		simxFinish(clientID);
