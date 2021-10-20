@@ -84,8 +84,13 @@ int main(int argc,char* argv[])
 				break;
 
 			}
-			simxSetJointTargetPosition(clientID, joint1, joint_position1, joint2, joint_position2, joint3, joint_position3,joint4,joint_position4, joint5, joint_position5, joint6, joint_position6,simx_opmode_oneshot_wait ) ;
-			extApi_sleepMs(100); //attente de 1 secondes
+			simxSetJointTargetPosition(clientID, joint1, joint_position1,simx_opmode_oneshot_wait ) ;
+			simxSetJointTargetPosition(clientID, joint2, joint_position2, simx_opmode_oneshot_wait);
+			simxSetJointTargetPosition(clientID, joint3, joint_position3, simx_opmode_oneshot_wait);
+			simxSetJointTargetPosition(clientID, joint4, joint_position4, simx_opmode_oneshot_wait);
+			simxSetJointTargetPosition(clientID, joint5, joint_position5, simx_opmode_oneshot_wait);
+			simxSetJointTargetPosition(clientID, joint6, joint_position6, simx_opmode_oneshot_wait);
+			extApi_sleepMs(100); //attente de 0.1 secondes
 		
 		}
 		simxFinish(clientID);
